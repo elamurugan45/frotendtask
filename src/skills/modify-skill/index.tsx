@@ -3,18 +3,18 @@ import { Button, Card, Drawer } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { getDrawerWidth } from "../../lib/drawer-size";
 import { SkillsListInfo } from "..";
-import { skillsModel } from "../../graphql";
 import { CreateSkill } from "../skills";
+import { SkillsModel } from "../../graphql";
 
 export const Skills: React.FC = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const toggleDrawerVisible = () => setIsDrawerVisible((prev) => !prev);
-  const [editData, setEditData] = useState<skillsModel | null>();
+  const [editData, setEditData] = useState<SkillsModel | null>();
   const onClickCreate = () => {
     setEditData(null);
     toggleDrawerVisible();
   };
-  const onClickEdit = (editData: skillsModel) => {
+  const onClickEdit = (editData: SkillsModel) => {
     setEditData(editData);
     toggleDrawerVisible();
   };

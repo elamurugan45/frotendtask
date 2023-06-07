@@ -2,13 +2,13 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Button, Col, Form, Input, Row, Select, message } from "antd";
 import { Rule } from "antd/es/form";
 import { useEffect, useState } from "react";
-import { IMutation, IQuery, skillsModel } from "../graphql";
+import { IMutation, IQuery, SkillsModel,  } from "../graphql";
 import { CREATE_SKILLS, UPDATE_SKILLS } from "./modify-skill/query";
 import { GET_TAG } from "../tags/modify-tag/query";
 
 interface PropsType {
   toggleDrawerVisible: () => void;
-  editData: skillsModel | null | undefined;
+  editData: SkillsModel | null | undefined;
 }
 const { Option } = Select;
 const rules: { [key: string]: Rule[] } = {
@@ -38,7 +38,7 @@ export const CreateSkill: React.FC<PropsType> = ({
     if (!editData) return;
     form.setFieldsValue({
       name: editData?.name,
-      tagsId: editData?.tags?.map((tags) => tags?.name),
+      tagsId: editData?.tags?.map((tags:any) => tags?.name),
     });
   }, [form, editData]);
   const onFinish = async () => {

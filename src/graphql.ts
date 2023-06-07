@@ -8,11 +8,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export class skillFilter {
-    skillsId?: Nullable<string>;
+export class SkillFilter {
+    skillId?: Nullable<string>;
 }
 
-export class employeeDto {
+export class EmployeeDto {
     name?: Nullable<string>;
     phone?: Nullable<string>;
     email?: Nullable<string>;
@@ -21,29 +21,29 @@ export class employeeDto {
     skillsId?: Nullable<string[]>;
 }
 
-export class tagsDto {
+export class TagsDto {
     name?: Nullable<string>;
 }
 
-export class skillsDto {
+export class SkillsDto {
     name?: Nullable<string>;
     tagsId?: Nullable<string[]>;
 }
 
-export class tagsModel {
+export class TagsModel {
     id?: Nullable<string>;
     name?: Nullable<string>;
     employeeCount?: Nullable<number>;
 }
 
-export class skillsModel {
+export class SkillsModel {
     id?: Nullable<string>;
     name?: Nullable<string>;
-    tags?: Nullable<tagsModel[]>;
+    tags?: Nullable<TagsModel[]>;
     employeeCount?: Nullable<number>;
 }
 
-export class employeeModel {
+export class EmployeeModel {
     id?: Nullable<string>;
     name?: Nullable<string>;
     phone?: Nullable<string>;
@@ -51,30 +51,30 @@ export class employeeModel {
     DOJ?: Nullable<DateTime>;
     DOB?: Nullable<DateTime>;
     age?: Nullable<number>;
-    skills?: Nullable<skillsModel[]>;
-    tags?: Nullable<tagsModel[]>;
+    skills?: Nullable<SkillsModel[]>;
+    tags?: Nullable<TagsModel[]>;
 }
 
 export abstract class IQuery {
-    getEmployee?: employeeModel;
-    getemployee?: employeeModel[];
-    getemployeecount: number;
-    skillCount: skillsModel[];
-    tagCount: skillsModel[];
-    gettags: tagsModel[];
-    getskills: skillsModel[];
+    getEmployee?: EmployeeModel;
+    getemployee?: EmployeeModel[];
+    getemployeecount?: number;
+    skillCount?: SkillsModel[];
+    tagCount?: SkillsModel[];
+    gettags?: TagsModel[];
+    getskills?: SkillsModel[];
 }
 
 export abstract class IMutation {
-    createemployee?: employeeModel;
-    updateemployee?: employeeModel;
-    deleteemployee?: employeeModel;
-    createtags?: tagsModel;
-    updatetags?: tagsModel;
-    deletetags?: tagsModel;
-    createskills?: skillsModel;
-    updateskills?: skillsModel;
-    deleteSkill?: skillsModel;
+    createemployee?: EmployeeModel;
+    updateemployee?: EmployeeModel;
+    deleteemployee?: EmployeeModel;
+    createtags?: TagsModel;
+    updatetags?: TagsModel;
+    deletetags?: TagsModel;
+    createskills?: SkillsModel;
+    updateskills?: SkillsModel;
+    deleteSkill?: SkillsModel;
 }
 
 export type DateTime = any;

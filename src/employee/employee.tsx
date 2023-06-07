@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Button, Col, DatePicker, Form, Input, Row, Select, message } from "antd";
 import { Rule } from "antd/es/form";
 import { useEffect, useState } from "react";
-import { IMutation, IQuery, employeeModel } from "../graphql";
+import { EmployeeModel, IMutation, IQuery,  } from "../graphql";
 import { CREATE_EMPLOYEE, UPDATE_EMPLOYEE } from "./modify-employee/query";
 import { GET_SKILLS } from "../skills/modify-skill/query";
 import { DateTime } from "luxon";
@@ -10,7 +10,7 @@ import { Skills } from "../skills/modify-skill";
 
 interface PropsType {
   toggleDrawerVisible: () => void;
-  editData: employeeModel | null | undefined;
+  editData: EmployeeModel | null | undefined;
 }
 const rules: { [key: string]: Rule[] } = {
   name: [
@@ -68,6 +68,7 @@ export const CreateEmployee: React.FC<PropsType> = ({
 
   const { loading: skillLoading, data } = useQuery<IQuery>(GET_SKILLS);
   const skillsInfo = data?.getskills;
+  console.log(skillsInfo)
   useEffect(() => {
     if (!editData) return;
     console.log(editData?.DOB);
@@ -75,9 +76,6 @@ export const CreateEmployee: React.FC<PropsType> = ({
       name: editData?.name,
       email: editData?.email,
       phone: editData?.phone,
-      // dob: editData?.dob
-      //   ? DateTime.fromISO(editData.dob).toFormat("dd-MM-yyyy")
-      //   : undefined,
       skillsId: editData?.skills,
     });
   }, [form, editData]);
@@ -101,7 +99,7 @@ export const CreateEmployee: React.FC<PropsType> = ({
         await updateEmployee({
           variables: {
             updateemployeeId: editData?.id,
-            Updateemployee: modifyemployeeDto,
+            input: modifyemployeeDto,
           },
         })
           .then(() => toggleDrawerVisible())
@@ -111,7 +109,7 @@ export const CreateEmployee: React.FC<PropsType> = ({
           variables: {
             data: modifyemployeeDto,
           },
-          refetchQueries: ["GetAllEmployee"],
+          refetchQueries: ["Getemployee"],
         })
           .then(() => toggleDrawerVisible())
           .catch((error) => message?.error(error.message));

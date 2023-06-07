@@ -3,11 +3,11 @@ import { Button, Col, Form, Input, Row, message } from "antd";
 import { Rule } from "antd/es/form";
 import { useEffect, useState } from "react";
 import { CREATE_TAG, UPDATE_TAG } from "./modify-tag/query";
-import { IMutation, tagsModel } from "../graphql";
+import { IMutation, TagsModel, } from "../graphql";
 
 interface PropsType {
   toggleDrawerVisible: () => void;
-  editData: tagsModel | null | undefined;
+  editData: TagsModel | null | undefined;
 }
 const rules: { [key: string]: Rule[] } = {
   name: [

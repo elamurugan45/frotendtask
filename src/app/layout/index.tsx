@@ -11,6 +11,7 @@ import './layout.css'
 import { Tags } from '../../tags/modify-tag';
 import { Skills } from '../../skills/modify-skill';
 import { Employee } from '../../employee/modify-employee';
+import { Link, Outlet } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
 
 const LayoutDesign: React.FC = () => {
@@ -20,32 +21,42 @@ const LayoutDesign: React.FC = () => {
   } = theme.useToken();
 
   return (
+
     <Layout className='layouts'>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'Employee',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'Skills',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'Tags',
-            },
-          ]}
-        />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+          <Menu.Item key={"menu.key"} style={{ paddingLeft: "35px" }}>
+            <Link to={"/dashboard"} className="icon-primary">
+              <>
+                <span className="color-primary side-nav-text">Dashboard</span>
+              </>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key={"menu.key2"} style={{ paddingLeft: "35px" }}>
+            <Link to={"/employee"} className="icon-primary">
+              <>
+                <span className="color-primary side-nav-text">Employee</span>
+              </>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key={"menu.key3"} style={{ paddingLeft: "35px" }}>
+            <Link to={"/skill"} className="icon-primary">
+              <>
+                <span className="color-primary side-nav-text">Skill</span>
+              </>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key={"menu.key4"} style={{ paddingLeft: "35px" }}>
+            <Link to={"/tag"} className="icon-primary">
+              <>
+                <span className="color-primary side-nav-text">Tag</span>
+              </>
+            </Link>
+          </Menu.Item>
+        </Menu>
       </Sider>
+      
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
           <Button
@@ -67,10 +78,11 @@ const LayoutDesign: React.FC = () => {
             background: colorBgContainer,
           }}
         >
-          <Employee/>
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
+    
   );
 };
 

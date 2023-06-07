@@ -9,20 +9,20 @@ query Getskills {
   }
 `
 export const CREATE_SKILLS=gql`
-mutation Createskills($data: skillsDto!) {
-    createskills(data: $data) {
+mutation Createskills($data: SkillsDto!) {
+  createskills(data: $data) {
+    name
+    id
+    tags {
+      id
       name
-      
-      tags {
-        name
-        id
-      }
     }
   }
+}
 `
 
 export const UPDATE_SKILLS=gql`
-mutation Updateskills($updateskillsId: String!, $input: skillsDto!) {
+mutation Updateskills($updateskillsId: String!, $input: SkillsDto!) {
     updateskills(id: $updateskillsId, input: $input) {
       name
       id

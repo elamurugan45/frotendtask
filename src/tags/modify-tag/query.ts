@@ -10,7 +10,7 @@ query Gettags {
 }
 `
 export const CREATE_TAG=gql`
-mutation Createtags($data: tagsDto!) {
+mutation Createtags($data: TagsDto!) {
     createtags(data: $data) {
       name
       id
@@ -18,7 +18,7 @@ mutation Createtags($data: tagsDto!) {
   }
 `
 export const UPDATE_TAG=gql`
-mutation Updatetags($updatetagsId: String!, $input: tagsDto!) {
+mutation Updatetags($updatetagsId: String!, $input: TagsDto!) {
   updatetags(id: $updatetagsId, input: $input) {
     name
     id

@@ -1,14 +1,14 @@
 import { gql } from "@apollo/client"
 
 export const GET_EMPLOYEE=gql`
-query Getemployee($filter: skillFilter) {
+query Getemployee($filter: SkillFilter!) {
   getemployee(filter: $filter) {
     phone
     name
     id
     email
-    DOJ
     age
+    DOJ
     DOB
     skills {
       name
@@ -19,79 +19,68 @@ query Getemployee($filter: skillFilter) {
 `
 
 export const CREATE_EMPLOYEE=gql`
-mutation Createemployee($data: employeeDto!) {
-    createemployee(data: $data) {
-      phone
-      name
+mutation Createemployee($data: EmployeeDto!) {
+  createemployee(data: $data) {
+    phone
+    id
+    name
+    email
+    age
+    DOJ
+    DOB
+    skills {
       id
-      email
-      DOJ
-      DOB
-      age
-      tags {
-        name
-        id
-      }
-      skills {
-        tags {
-          name
-          id
-        }
-        name
-        id
-      }
+      name
+    }
+    tags {
+      id
+      name
     }
   }
+}
 `
 
 
 export const UPDATE_EMPLOYEE=gql`
-mutation Updateemployee($updateemployeeId: String!, $input: employeeDto!) {
-    updateemployee(id: $updateemployeeId, input: $input) {
-      tags {
-        id
-        name
-      }
-      skills {
-        tags {
-          name
-          id
-        }
-        name
-        id
-      }
-      phone
-      name
+mutation Updateemployee($updateemployeeId: String!, $input: EmployeeDto!) {
+  updateemployee(id: $updateemployeeId, input: $input) {
+    phone
+    name
+    id
+    email
+    age
+    DOJ
+    DOB
+    skills {
       id
-      email
-      DOJ
-      DOB
-      age
+      name
+      tags {
+        name
+        id
+      }
     }
   }
+}
 `
 
 export const DELETE_EMPLOYEE=gql`
 mutation Deleteemployee($deleteemployeeId: String!) {
-    deleteemployee(id: $deleteemployeeId) {
+  deleteemployee(id: $deleteemployeeId) {
+    phone
+    name
+    id
+    email
+    age
+    DOJ
+    DOB
+    skills {
+      name
+      id
       tags {
         id
         name
       }
-      skills {
-        tags {
-          id
-          name
-        }
-        name
-        id
-      }
-      phone
-      name
-      id
-      email
-      DOJ
-      DOB
     }
   }
+}
 `

@@ -4,17 +4,17 @@ import { PlusCircleOutlined } from "@ant-design/icons";
 import { getDrawerWidth } from "../../lib/drawer-size";
 import { EmployeeListInfo } from "..";
 import { CreateEmployee } from "../employee";
-import { skillsModel } from "../../graphql";
+import { SkillsModel } from "../../graphql";
 
 export const Employee: React.FC = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const toggleDrawerVisible = () => setIsDrawerVisible((prev) => !prev);
-  const [editData, setEditData] = useState<skillsModel | null>();
+  const [editData, setEditData] = useState<SkillsModel | null>();
   const onClickCreate = () => {
     setEditData(null);
     toggleDrawerVisible();
   };
-  const onClickEdit = (editData: skillsModel) => {
+  const onClickEdit = (editData: SkillsModel) => {
     setEditData(editData);
     toggleDrawerVisible();
   };

@@ -3,9 +3,9 @@ import { Card, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { DELETE_TAG, GET_TAG } from "./modify-tag/query";
-import { IMutation, IQuery, tagsModel } from "../graphql";
+import { IMutation, IQuery, TagsModel,  } from "../graphql";
 interface PropsType {
-  onClickEdit: (editData: tagsModel) => void;
+  onClickEdit: (editData: TagsModel) => void;
 }
 export const TagListInfo: React.FC<PropsType> = ({ onClickEdit }) => {
   const { data, loading } = useQuery<IQuery>(GET_TAG, {
@@ -25,7 +25,7 @@ export const TagListInfo: React.FC<PropsType> = ({ onClickEdit }) => {
     });
   };
   const tagList = data?.gettags;
-  const tableColumns: ColumnsType<tagsModel> = [
+  const tableColumns: ColumnsType<TagsModel> = [
     {
       title: "Name",
       dataIndex: "name",

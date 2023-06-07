@@ -2,10 +2,10 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Card, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import { IMutation, IQuery, skillsModel } from "../graphql";
+import { IMutation, IQuery, SkillsModel,  } from "../graphql";
 import { DELETE_SKILLS, GET_SKILLS } from "./modify-skill/query";
 interface PropsType {
-  onClickEdit: (editData: skillsModel) => void;
+  onClickEdit: (editData: SkillsModel) => void;
 }
 export const SkillsListInfo: React.FC<PropsType> = ({ onClickEdit }) => {
   const { data, loading } = useQuery<IQuery>(GET_SKILLS, {
@@ -25,7 +25,7 @@ export const SkillsListInfo: React.FC<PropsType> = ({ onClickEdit }) => {
     });
   };
   const skillsList = data?.getskills;
-  const tableColumns: ColumnsType<skillsModel> = [
+  const tableColumns: ColumnsType<SkillsModel> = [
     {
       title: "Name",
       dataIndex: "name",

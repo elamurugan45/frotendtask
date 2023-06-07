@@ -4,17 +4,17 @@ import { PlusCircleOutlined } from "@ant-design/icons";
 import { getDrawerWidth } from "../../lib/drawer-size";
 import { CreateTag } from "../tags";
 import { TagListInfo } from "..";
-import { tagsModel } from "../../graphql";
+import { TagsModel } from "../../graphql";
 
 export const Tags: React.FC = () => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const toggleDrawerVisible = () => setIsDrawerVisible((prev) => !prev);
-  const [editData, setEditData] = useState<tagsModel | null>();
+  const [editData, setEditData] = useState<TagsModel | null>();
   const onClickCreate = () => {
     setEditData(null);
     toggleDrawerVisible();
   };
-  const onClickEdit = (editData: tagsModel) => {
+  const onClickEdit = (editData: TagsModel) => {
     setEditData(editData);
     toggleDrawerVisible();
   };
