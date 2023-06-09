@@ -68,8 +68,7 @@ const LayoutDesign: React.FC = () => {
               </>
             </Link>
           </Menu.Item>
-        </Menu>
-        <Menu.Item
+          <Menu.Item
             key={"menu.key5"}
             style={{ paddingLeft: "35px" }}
             // onClick={handleSignOut}
@@ -80,6 +79,8 @@ const LayoutDesign: React.FC = () => {
               </>
             </Link>
           </Menu.Item>
+        </Menu>
+       
       </Sider>
       
       <Layout>
