@@ -76,7 +76,7 @@ export const CreateEmployee: React.FC<PropsType> = ({
       name: editData?.name,
       email: editData?.email,
       phone: editData?.phone,
-      skillsId: editData?.skills,
+      skillsId: editData?.skills?.map((Skills) => Skills?.id)
     });
   }, [form, editData]);
   const onFinish = async () => {

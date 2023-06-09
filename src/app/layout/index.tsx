@@ -12,13 +12,27 @@ import { Tags } from '../../tags/modify-tag';
 import { Skills } from '../../skills/modify-skill';
 import { Employee } from '../../employee/modify-employee';
 import { Link, Outlet } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { getAuth, signOut } from 'firebase/auth';
+import { logout } from '../../session/session-model';
 const { Header, Sider, Content } = Layout;
 
 const LayoutDesign: React.FC = () => {
+  const dispatch = useDispatch();
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const handleSignOut = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        dispatch(logout() as any);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
 
@@ -55,6 +69,17 @@ const LayoutDesign: React.FC = () => {
             </Link>
           </Menu.Item>
         </Menu>
+        <Menu.Item
+            key={"menu.key5"}
+            style={{ paddingLeft: "35px" }}
+            // onClick={handleSignOut}
+          >
+            <Link to={"/login"} onClick={handleSignOut}>
+              <>
+                <span>Logout</span>
+              </>
+            </Link>
+          </Menu.Item>
       </Sider>
       
       <Layout>
